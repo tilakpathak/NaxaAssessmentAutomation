@@ -44,11 +44,11 @@ beforeEach(function () {
     projectsettings.users();
   });
 
-  it.only("Admin should be able to assign the from", () => {
+  it("Admin should be able to assign the from", () => {
     projectsettings.form();
   });
 
-  it("Admin should be able to add infographic", () => {
+  it.only("Admin should be able to add infographic", () => {
     projectsettings.infographics();
   });
 
