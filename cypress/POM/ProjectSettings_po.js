@@ -109,14 +109,69 @@ class ProjectSettings {
     cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
       .contains('Infographics updated successfully.')
 
-      //Remove Infographics
-      cy.wait(5000);
-      cy.get('.is-between.is-flex.is-wrap.mb-15').should('be.visible');
-      cy.get("tbody tr:nth-of-type(1) div .material-icons").click(); //clicking the 3 dots 
-      cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(2) > a").click().wait(3000); //clicking the delete 
-      cy.get(".is-btn.is-btn_red").click();
-      cy.scrollTo('top');
+    //Remove Infographics
+    cy.wait(5000);
+    cy.get('.is-between.is-flex.is-wrap.mb-15').should('be.visible');
+    cy.get("tbody tr:nth-of-type(1) div .material-icons").click(); //clicking the 3 dots 
+    cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(2) > a").click().wait(3000); //clicking the delete 
+    cy.get(".is-btn.is-btn_red").click();
+    cy.scrollTo('top');
+  }
 
+  siteformdetails() {
+    cy.wait(3000);
+    cy.get("li:nth-of-type(12) > a").click().wait(2000) // click on site submission details inside settings
+    cy.get(".is-btn.is-btn_icon.is-btn_link > span").click(); //click on create new button
+    cy.get(":nth-child(1) > .pm-select > .pm-select_item").click().wait(2000); //click on dropdown
+    cy.get(".left-dropdown.pm-select_list > li:nth-of-type(2)").click(); //select table
+    cy.get(":nth-child(2) > .pm-select > .pm-select_item").click().wait(2000); // click on form dropdown
+    cy.get(".pm-select.pm-select_show > .left-dropdown.pm-select_list > li[role='tab']").click(); //select the form
+    cy.get("p > span").click().wait(2000); //click on question dropdon
+    cy.get("li:nth-of-type(1) > span").click();
+    cy.get("input[name='name']").type("Health");
+    cy.get("input[name='order']").type("0").wait(2000);
+    cy.get('.common-button').click();
+    cy.scrollTo('top');
+    cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
+      .contains('Data Saved Successfully.')
+
+    //edit the site information details
+    cy.wait(2000)
+    cy.get("tbody tr:nth-of-type(1) div .material-icons").click();
+    cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(1) > a").click().wait(2000);
+    cy.get("input[name='name']").type("_test").wait(2000);
+    cy.get(".common-button.is-btn.is-btn_primary").click()
+    cy.scrollTo('top');
+    cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
+      .contains('Data updated successfully.')
+
+    // view the added site details in the project dashboard
+    cy.get(".dbd-breadcrumb.fs-md.fw-md.is-align-center.is-flex.mb-15 > li:nth-of-type(2) > a").click().wait(3000); //click on project name from the top of the setting page
+    cy.reload().wait(5000);
+    cy.get(".dbd-togglecntr").scrollTo('bottom').wait(5000)
+
+
+    // remove the site information details
+    cy.go(-2);
+    cy.wait(2000);
+    cy.get("tbody tr:nth-of-type(1) div .material-icons").click();
+    cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(2) > a").click().wait(2000);
+    cy.get(".is-btn.is-btn_red").click();
+    cy.scrollTo('top');
+  }
+
+  layersettings() {
+    cy.wait(3000);
+    cy.get(".dbd-breadcrumb.fs-md.fw-md.is-align-center.is-flex.mb-15 > li:nth-of-type(2) > a").click().wait(3000); //click on project name from the top of the setting page
+    cy.get(".mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click().wait(4000); //click on map
+    cy.get(".dvd-sidebar-body.scrollbar").scrollTo('bottom').wait(2000); // scroll side bar
+    cy.get(".false.is-align-center.is-btn.is-btn_icon.is-btn_link.is-flex > .ml-05").click(); //click on settings
+    cy.get("li:nth-of-type(13) > a").click() //click on layer settinggs
+    cy.get("div:nth-of-type(1) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
+    cy.get("div:nth-of-type(2) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
+    cy.get("div:nth-of-type(3) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
+    cy.go(-1).wait(2000); // back to the map page 
+    cy.reload()
   }
 
 }

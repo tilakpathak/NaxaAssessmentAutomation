@@ -48,8 +48,16 @@ beforeEach(function () {
     projectsettings.form();
   });
 
-  it.only("Admin should be able to add infographic", () => {
+  it("Admin should be able to add infographic", () => {
     projectsettings.infographics();
+  });
+
+  it("Admin should be able to add site form details", () => {
+    projectsettings.siteformdetails();
+  });
+
+  it.only("Admin should be able to change the layer-settings", () => {
+    projectsettings.layersettings();
   });
 
 });
