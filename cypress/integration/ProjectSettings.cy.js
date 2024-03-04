@@ -40,11 +40,11 @@ beforeEach(function () {
     projectsettings.projectarea();
   });
 
-  it.only("Admin should be able to assign the user", () => {
+  it("Admin should be able to assign the user", () => {
     projectsettings.users();
   });
 
-  it("Admin should be able to assign the from", () => {
+  it.only("Admin should be able to assign the from", () => {
     projectsettings.form();
   });
 
