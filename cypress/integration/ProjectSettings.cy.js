@@ -1,7 +1,7 @@
 ///<reference types="Cypress"/>
 import ProjectSettings from "../POM/ProjectSettings_po";
 
-describe("Test for project page", () => {
+describe("Test for project settings page", () => {
   const projectsettings= new ProjectSettings();
 
 before(function () {

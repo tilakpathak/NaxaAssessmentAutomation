@@ -1,8 +1,8 @@
 ///<reference types="Cypress"/>
-import ProjectCreation from "../POM/ProjectCreation_po";
+import MapPage from "../POM/MapPage_po";
 
-describe("Test for project creating", () => {
-  const projectcreation = new ProjectCreation();
+describe("Test for Map page", () => {
+  const mappage= new MapPage();
 
 before(function () {
   cy.visitMainPage();
@@ -28,12 +28,24 @@ beforeEach(function () {
   });
 });
 
-  it("Validate the successful project creation", () => {
-    projectcreation.addproject();
+  it("Admin should redirect to project details page", () => {
+   mappage.selectproject();
   });
 
-  it("User should redirect to the project detail page", () => {
-    projectcreation.selectproject();
+  it("Admin should able to upload the Area", () => {
+    mappage.projectarea();
   });
+
+  it("Admin should be able to change the layer-settings", () => {
+    mappage.layersettings();
+  });
+
+  it("User should be able to add layer", () => {
+    mappage.Addlayer();
+  });
+  
+//   it("User should be able to edit layer", () => {
+//     mappage.Editlayer();
+//   });
 
 });

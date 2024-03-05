@@ -1,7 +1,7 @@
 ///<reference types="Cypress"/>
 import Dashboard from "../POM/Dashboard_po";
 
-describe("Test for login page", () => {
+describe("Test for Dashboard page", () => {
   const dashboard = new Dashboard();
 
   beforeEach(function () {
