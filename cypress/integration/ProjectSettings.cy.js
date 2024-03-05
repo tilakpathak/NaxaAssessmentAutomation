@@ -28,11 +28,11 @@ beforeEach(function () {
   });
 });
 
-  it.only("Admin should redirect to project details page", () => {
+  it("Admin should redirect to project details page", () => {
     projectsettings.selectproject();
   });
 
-  it.only("Admin should able to click on settings", () => {
+  it("Admin should able to click on settings", () => {
     projectsettings.settings();
   });
 
@@ -56,7 +56,7 @@ beforeEach(function () {
     projectsettings.siteformdetails();
   });
 
-  it.only("Admin should be able to change the layer-settings", () => {
+  it("Admin should be able to change the layer-settings", () => {
     projectsettings.layersettings();
   });
 

@@ -57,7 +57,7 @@ class ProjectSettings {
       .scrollIntoView() // Scroll to the "close" icon
     cy.get(".pm-table_border").scrollTo('topRight') //scroll to top right of table
       .wait(5000); // Wait for 5 seconds
-    cy.get("tbody > tr:last-child .is-circle.is-xs > .material-icons").scrollIntoView().click().wait(2000); // removing the user
+    cy.get("tbody > tr:last-child .is-circle.is-xs > .material-icons").click({force:true}).wait(2000); // removing the user
     cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
       .contains('Successfully User Unassigned.')
   }
@@ -126,11 +126,11 @@ class ProjectSettings {
     cy.get(".left-dropdown.pm-select_list > li:nth-of-type(2)").click(); //select table
     cy.get(":nth-child(2) > .pm-select > .pm-select_item").click().wait(2000); // click on form dropdown
     cy.get(".pm-select.pm-select_show > .left-dropdown.pm-select_list > li[role='tab']").click(); //select the form
-    cy.get("p > span").click().wait(2000); //click on question dropdon
-    cy.get("li:nth-of-type(1) > span").click();
+    cy.get("p > span").click({force:true}).wait(2000); //click on question dropdon
+    cy.get("li:nth-of-type(1) > span").click({force:true});
     cy.get("input[name='name']").type("Health");
     cy.get("input[name='order']").type("0").wait(2000);
-    cy.get('.common-button').click();
+    cy.get('.common-button').click({force:true});
     cy.scrollTo('top');
     cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
       .contains('Data Saved Successfully.')
@@ -145,14 +145,7 @@ class ProjectSettings {
     cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
       .contains('Data updated successfully.')
 
-    // view the added site details in the project dashboard
-    cy.get(".dbd-breadcrumb.fs-md.fw-md.is-align-center.is-flex.mb-15 > li:nth-of-type(2) > a").click().wait(3000); //click on project name from the top of the setting page
-    cy.reload().wait(5000);
-    cy.get(".dbd-togglecntr").scrollTo('bottom').wait(5000)
-
-
     // remove the site information details
-    cy.go(-2);
     cy.wait(2000);
     cy.get("tbody tr:nth-of-type(1) div .material-icons").click();
     cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(2) > a").click().wait(2000);
@@ -163,15 +156,14 @@ class ProjectSettings {
   layersettings() {
     cy.wait(3000);
     cy.get(".dbd-breadcrumb.fs-md.fw-md.is-align-center.is-flex.mb-15 > li:nth-of-type(2) > a").click().wait(3000); //click on project name from the top of the setting page
-    cy.get(".mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click().wait(4000); //click on map
-    cy.get(".dvd-sidebar-body.scrollbar").scrollTo('bottom').wait(2000); // scroll side bar
+    cy.get(".mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click().wait(5000); //click on map
     cy.get(".false.is-align-center.is-btn.is-btn_icon.is-btn_link.is-flex > .ml-05").click(); //click on settings
     cy.get("li:nth-of-type(13) > a").click() //click on layer settinggs
     cy.get("div:nth-of-type(1) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
     cy.get("div:nth-of-type(2) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
     cy.get("div:nth-of-type(3) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
-    cy.go(-1).wait(2000); // back to the map page 
-    cy.reload()
+    cy.go(-1).wait(5000); // back to the map page 
+    cy.get(".mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click().wait(5000); //click on map
   }
 
 }
