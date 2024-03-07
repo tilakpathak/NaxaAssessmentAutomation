@@ -1,4 +1,4 @@
-class MapPage{
+class MapPage {
 
   selectproject() {
     cy.get("div:nth-of-type(1) > .is-grow.mb-10.naxatw-relative.pd-15.pm-card > a > .is-align-center.is-between.is-flex").click();
@@ -11,7 +11,7 @@ class MapPage{
     return this;
   }
 
- projectarea() {
+  projectarea() {
     cy.get("[class='grid-xl-3 grid-md-4 pl-4'] > [class] > li:nth-child(2) a").click();
     cy.get("input#upload-data").attachFile(["DC-W-10.geojson"]).wait(2000);
     cy.scrollTo('top').wait(2000);
@@ -35,26 +35,21 @@ class MapPage{
     cy.get("div:nth-of-type(2) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
     cy.get("div:nth-of-type(3) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
     cy.go(-1); // back to the map page 
-    cy.get(".container-fluid > .mt-0.pm-tab.pm-tab_border > li:nth-of-type(2) > a").click({force:true}); //click on data logic 
-    cy.get(".container-fluid > .mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click({force:true}).wait(5000); //click on map
+    cy.get(".container-fluid > .mt-0.pm-tab.pm-tab_border > li:nth-of-type(2) > a").click({ force: true }); //click on data logic 
+    cy.get(".container-fluid > .mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click({ force: true }).wait(5000); //click on map
   }
 
   Addlayer() {
     cy.get("[class='material-icons naxatw-text-white naxatw-text-\[18px\]']").click(); //click on create layer buttton
     cy.get("div:nth-of-type(2) > .btnClassName.false.is-btn.is-btn_icon.is-btn_primary > .fs-md.fw-500").click().wait(2000); //click on select from from
-    cy.get(".pm-group > .pm-select > .pm-select_item").click({force:true}).wait(2000); // click on form dropdown
+    cy.get(".pm-group > .pm-select > .pm-select_item").click({ force: true }).wait(2000); // click on form dropdown
     cy.get('.pm-group > .pm-select > .pm-select_list > li').click() //select the form
     cy.get('.naxatw-space-y-2 > .pm-control').clear().type("Form-layer").wait(3000)
     cy.get("div:nth-of-type(5) > .pm-modal_cntr .btnClassName.false.is-btn.is-btn_icon.is-btn_primary > .fs-md.fw-500").click().wait(2000); //click on save bubtton
     cy.get(":nth-child(2) > .acc-list > .acc-header").click().wait(2000); //click on expand-xlose icon 
     cy.get(":nth-child(2) > .acc-list > .acc-header").click().wait(2000); //click on sxlose icon
   }
-
-//   Editlayer() {
-//     cy.get("[class='dbd-map_sidebar pr-15'] div:nth-of-type(1) div:nth-of-type(1) [class] div:nth-child(1) .is-circle.false .material-icons").click().wait(1500);
-//     cy.get('.pm-dropdown.pm-dropdown_option.pm-dropdown_right.pm-dropdown_show > .pm-dropdown_menu > li:nth-of-type(1) > a').click();
-//   }
-
+  
 }
 
 export default MapPage;

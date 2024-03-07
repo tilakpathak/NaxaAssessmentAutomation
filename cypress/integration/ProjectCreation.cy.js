@@ -32,8 +32,4 @@ beforeEach(function () {
     projectcreation.addproject();
   });
 
-  it("User should redirect to the project detail page", () => {
-    projectcreation.selectproject();
-  });
-
 });

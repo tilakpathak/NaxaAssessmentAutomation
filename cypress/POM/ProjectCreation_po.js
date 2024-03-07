@@ -32,17 +32,6 @@ class ProjectCreation {
     cy.get("div[role='alert'] > div:nth-of-type(2)").should("have.text", "Project added successfully") //Assertion project added 
     return data; // Return the generated data for potential further use
   }
-
-  selectproject() {
-    cy.get("div:nth-of-type(1) > .is-grow.mb-10.naxatw-relative.pd-15.pm-card > a > .is-align-center.is-between.is-flex").click();
-    cy.url().should('include', '/?tab=dashboard'); //url assertion
-    // cy.window().scrollTo('bottom'); // window size max so this line of code is not working 
-    // Scrolls to the bottom of the page
-    cy.get(".naxatw-flex.naxatw-items-center.naxatw-justify-between.naxatw-mb-2").scrollIntoView().should('be.visible').wait(2000);
-    cy.get(".fs-md.is-between.is-flex.mt-10.pl-12").scrollIntoView().should('be.visible');
-    return this;
-  }
-
 }
 
 export default ProjectCreation;

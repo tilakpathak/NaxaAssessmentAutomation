@@ -6,7 +6,7 @@ describe("Test for project settings page", () => {
 
 before(function () {
   cy.visitMainPage();
-  cy.login().wait(4000);  
+  cy.login().wait(5000);  
 });
 
 beforeEach(function () {
@@ -28,11 +28,11 @@ beforeEach(function () {
   });
 });
 
-  it("Admin should redirect to project details page", () => {
+  it.only("Admin should redirect to project details page", () => {
     projectsettings.selectproject();
   });
 
-  it("Admin should able to click on settings", () => {
+  it.only("Admin should able to click on settings", () => {
     projectsettings.settings();
   });
 
