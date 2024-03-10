@@ -28,11 +28,11 @@ describe("Test for Map page", () => {
     });
   });
 
-  it.only("Admin should redirect to project details page", () => {
+  it("Admin should redirect to project details page", () => {
     mappage.project();
   });
 
-  it.only("Admin should redirect to Map page", () => {
+  it("Admin should redirect to Map page", () => {
     mappage.map();
   });
 
@@ -76,7 +76,7 @@ describe("Test for Map page", () => {
     mappage.criteria();
   });
 
-  it.only("User should be able to Measure the map", () => {
+  it("User should be able to Measure the map", () => {
     mappage.tools();
   });
 
@@ -84,7 +84,7 @@ describe("Test for Map page", () => {
     mappage.download();
   });
 
-  it.only("User should be able to draw site on the map", () => {
+  it("User should be able to draw site on the map", () => {
     mappage.drawsite();
   });
 
