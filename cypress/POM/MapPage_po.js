@@ -3,10 +3,12 @@ class MapPage {
   project() {
     cy.get("[type='search']").clear().type("Household Risk Assessment of Dodhara Chandani Municipality, Kanchanpur").wait(5000);
     cy.get(".is-grow.mb-10.naxatw-relative.pd-15.pm-card").click().wait(5000);
+    return this;
   }
 
   map() {
     cy.get(".mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click().wait(3000); //click on map from dashboard
+    return this;
   }
 
   Addlayer() {
@@ -18,6 +20,7 @@ class MapPage {
     cy.get('div:nth-of-type(5) > .pm-modal_cntr .left-dropdown.pm-select_list > li:nth-of-type(1)').click() //select the form
     cy.get('.naxatw-space-y-2 > .pm-control').clear().type("Information Form").wait(3000) // edit the layer name 
     cy.get("div:nth-of-type(5) > .pm-modal_cntr .btnClassName.false.is-btn.is-btn_icon.is-btn_primary > .fs-md.fw-500").click().wait(2000); //click on save bubtton
+    return this;
   }
 
   editstyle() {
@@ -28,6 +31,7 @@ class MapPage {
     cy.get(".is-align-center.is-flex.is-gap-15.is-start.range-slider-wrapper.sm-slider > input[name='fillOpacity']").clear().type(100);
     cy.get(".is-center.is-flex.marker-type-footer > .is-btn.is-btn_primary.is-sm").click({ force: true }).wait(5000);
     cy.get(".dvd-sidebar-body.scrollbar").scrollTo('top').wait(5000) //sroll the side  bar
+    return this;
   }
 
   editlayername() {
@@ -36,6 +40,7 @@ class MapPage {
     cy.get("input[name='layerName']").clear().type("Test Info Layer").wait(2000) //type the layer name 
     cy.get("[class='naxatw-space-y-5'] .is-btn_primary").click(); // click on save button
     cy.get(".dvd-sidebar-body.scrollbar").scrollTo('top').wait(3000)
+    return this;
   }
 
   zoomtolayer() {
@@ -46,6 +51,7 @@ class MapPage {
     cy.get("div:nth-of-type(5) > li > .is-flex.pm-checkbox > .is-end.is-flex > .false.pm-dropdown.pm-dropdown_right > .false.is-circle > .material-icons").click({ force: true }).wait(3000) //it click on three dots 
     cy.get(".dvd-sidebar-body.scrollbar").scrollTo('top')
     cy.get(".pm-dropdown.pm-dropdown_option.pm-dropdown_right.pm-dropdown_show > .pm-dropdown_menu > li:nth-of-type(3) > a").realHover().wait(1500).click().wait(2000); //it click on zoom to layer
+    return this;
   }
 
   uploadlayer() {
@@ -56,6 +62,7 @@ class MapPage {
     cy.get('.naxatw-flex > .pm-select > .pm-select_item').click();
     cy.get(".pm-select.pm-select_show > .left-dropdown.pm-select_list > li:nth-of-type(2)").click().wait(3000);
     cy.get("div:nth-of-type(5) > .pm-modal_cntr .common-button.is-btn.is-btn_primary").click().wait(5000);
+    return this;
   }
 
   delete() {
@@ -66,6 +73,7 @@ class MapPage {
     cy.get(".dvd-sidebar-body.scrollbar").scrollTo('top')
     cy.get(":nth-child(2) > .acc-list > .acc-header").click().wait(4000); //click on expand-open icon
     cy.get(".dvd-sidebar-body.scrollbar > div:nth-of-type(2) .is-list > div:nth-of-type(1) > li > .is-flex.pm-checkbox > .custom-checkbox > input[type='checkbox']").click()
+    return this;
   }
 
   weather() {
@@ -74,6 +82,7 @@ class MapPage {
     cy.get(':nth-child(2) > .pm-checkbox > .custom-checkbox > #precipitation').click().wait(7000);
     cy.get(':nth-child(2) > .pm-checkbox > .custom-checkbox > #precipitation').click()
     cy.get(".dvd-sidebar-body.scrollbar").scrollTo('top').wait(3000)
+    return this;
   }
 
   mapeicons() {
@@ -87,6 +96,7 @@ class MapPage {
     cy.get('.ol-zoom-in').click().wait(2000)
     cy.get('.ol-zoom-out').click().wait(2000)
     cy.get("a[title='Exit Fullscreen']").click().wait(3000)
+    return this;
   }
 
   searchbyhouse() {
@@ -96,6 +106,7 @@ class MapPage {
     cy.get('.pm-select_item > .naxatw-bg-white').click().wait(3000); //click on house dropdown
     cy.get('[data-value="submission_id"]').click({ force: true }).wait(2000);
     cy.get('.search > .search-wrap > .pm-control').dblclick({ force: true }).type('13428').wait(5000)
+    return this;
   }
 
   criteria() {
@@ -124,6 +135,7 @@ class MapPage {
     cy.get(':nth-child(2) > .filter-container-metric > .filter-content > :nth-child(2) > .close__icon > .material-icons').click().wait(5000)
 
     cy.get("[class=' naxatw-flex naxatw-justify-between naxatw-items-center naxatw-gap-2'] div").click().wait(2000)
+    return this;
   }
 
   tools() {
@@ -165,6 +177,7 @@ class MapPage {
 
     // Wait for some time (7 seconds) before clicking on the close icon again
     cy.get('.close-icons').wait(5000).click()
+    return this;
   }
 
   download() {
@@ -188,6 +201,15 @@ class MapPage {
     cy.get('.naxatw-flex > [type="submit"]').click()
     cy.get(".error").should('have.text', 'Geometry is Required.')
     cy.get("a[title='Add New Site']").click({force:true})
+    return this;
+  }
+
+  remove(){
+    cy.get(':nth-child(2) > .acc-list > .acc-body > .is-list > :nth-child(1) > [title=""] > .pm-checkbox > .is-end > .pm-dropdown > .is-circle > .material-icons').click().wait(3000); //click on thrree dots
+    cy.get(':nth-child(2) > .acc-list > .acc-body > .is-list > :nth-child(1) > [title=""] > .pm-checkbox > .is-end > .pm-dropdown > .pm-dropdown_menu > :nth-child(4) > a').realHover().click({ force: true }); //click on remove
+    cy.get('.pm-modal_show > .pm-modal_cntr > .pm-modal_footer > .common-button').wait(2000).click();
+    cy.get(".dvd-sidebar-body.scrollbar").scrollTo('top')
+    return this;
   }
 
 }

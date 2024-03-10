@@ -65,6 +65,7 @@ class ProjectSettings {
     cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
       .contains('Successfully User Unassigned.')
       cy.scrollTo('top');
+      return this;
   }
 
   form() {
@@ -81,6 +82,7 @@ class ProjectSettings {
     cy.get(".btnClassName.false.is-btn.is-btn_icon.is-btn_primary").click(); //save button
     cy.get('.Toastify__toast-body').should("have.text", "Successfully Form Assigned to Project."); // assertion for assigned form to the project
     cy.scrollTo('top').wait(4000);
+    return this;
   }
 
   infographics() {
@@ -118,6 +120,7 @@ class ProjectSettings {
     cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(2) > a").click().wait(3000); //clicking the delete 
     cy.get(".is-btn.is-btn_red").click();
     cy.scrollTo('top');
+    return this;
   }
 
   siteformdetails() {
@@ -153,6 +156,7 @@ class ProjectSettings {
     cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(2) > a").click().wait(2000);
     cy.get(".is-btn.is-btn_red").click({force: true});
     cy.scrollTo('top');
+    return this;
   }
 
   layersettings() {
@@ -167,6 +171,7 @@ class ProjectSettings {
     cy.go(-1); // back to the map page 
     cy.get(".container-fluid > .mt-0.pm-tab.pm-tab_border > li:nth-of-type(2) > a").click({force:true}); //click on data logic 
     cy.get(".container-fluid > .mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click({force:true}).wait(5000); //click on map
+    return this;
   }
 
 }

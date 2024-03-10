@@ -22,6 +22,7 @@ class FormPage {
       cy.get(selector).should("include.text", this.errorMessages[index]);
     });    
     cy.get(".is-btn.is-btn_secondary").click(); // Cancel button
+    return this;
   }
 
   addform() {

@@ -88,4 +88,8 @@ describe("Test for Map page", () => {
     mappage.drawsite();
   });
 
+  it("User should be able to remove form", () => {
+    mappage.remove();
+  });
+
 });

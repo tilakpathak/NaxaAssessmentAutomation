@@ -94,6 +94,7 @@ class UserPage {
     this.errorSelectors.forEach((selector, index) => {
       cy.get(selector).should("include.text", this.errorMessages[index]);
     });
+    return this;
   }
 
   PasswordValidation() {
@@ -134,11 +135,13 @@ class UserPage {
     cy.get(".dbd-header #create-user .is-btn_primary").click() //Save button
     cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
     .contains('Username:A user with that username already exists.')
+    return this;
   }
   
   search() {
     cy.get("[type='search']").clear().type("test").wait(3000);
     cy.get("[type='search']").clear() //it clear the input name
+    return this;
   }
 
   status() {
@@ -147,6 +150,7 @@ class UserPage {
 
     cy.get("tr:nth-of-type(4) > td:nth-of-type(6) > div > span > .switch > .round.slider").click(); // To active user
     cy.get("div[role='alert'] > div:nth-of-type(2)").should("have.text", "User Activated").wait(2000); //Active sucessfully message assertion
+    return this;
   
   }
 

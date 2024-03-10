@@ -32,6 +32,7 @@ class ProjectPage {
     this.errorSelectors.forEach((selector, index) => {
       cy.get(selector).should("include.text", this.errorMessages[index]);
     });
+    return this;
   }
 
   EmailValidation() {
@@ -43,6 +44,7 @@ class ProjectPage {
     cy.get(".dbd-header #create-project .is-btn_primary").click().wait(3000); // save button
     cy.get(".dbd-header .is-btn_secondary").click(); // Cancel button
     cy.get("div:nth-of-type(2) > .naxatw-space-y-2 > .error").should("include.text", "Enter a valid email address")
+    return this;
   }
 
   DateValidation() {
@@ -59,6 +61,7 @@ class ProjectPage {
     cy.get(".dbd-header #create-project .is-btn_primary").click().wait(3000); // save button
     cy.get("div:nth-of-type(2) > .error").should("have.text", "End date cannot be before start date");
     cy.get(".dbd-header .is-btn_secondary").click(); // Cancel button
+    return this;
   }
 
   
@@ -119,6 +122,7 @@ class ProjectPage {
 
     cy.get("[type='search']").type(projectName).wait(4000); // it search the added project 
     cy.get(".naxatw-mr-2 > .material-icons").click(); // close the search item
+    return this;
 
   }
 
@@ -128,6 +132,7 @@ class ProjectPage {
     const PName = "TestNaxa" + Math.floor(Math.random() * 10);
     cy.get("main > div#create-project > .pm-modal_cntr > .pm-modal_body.scrollbar > form input[name='name']").clear().type(PName).wait(1500);
     cy.get("main > div#create-project > .pm-modal_cntr  .common-button.is-btn.is-btn_primary").click({ force: true }).wait(5000); //save button
+    return this;
   }
 
   DeleteProject() {
@@ -141,11 +146,13 @@ class ProjectPage {
       const expectedValue = initialValue - 1; // Decrease the initial value by one
       cy.get('.mr-05').should('have.text', expectedValue.toString()); // Assert that the element's text is now the expected value
     });
+    return this;
   }
 
   SearchProject() {
     cy.get("[type='search']").clear().type("Gsma").wait(4000);
     cy.get(".naxatw-mr-2 > .material-icons").click().wait(2000);
+    return this;
   }
 
 }

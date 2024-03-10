@@ -35,11 +35,13 @@ class LoginPage {
     VerifyEmptyPassword() {
       cy.get(".Toastify__toast-body").should("have.text", "Username or password is not valid.");
       cy.wait(5000);
+      return this;
     }
 
     VerifyInvalidEmail() {
       cy.get(".Toastify__toast-body").should("have.text", "Username or password is not valid.");
       cy.wait(5000);
+      return this;
     }
     
     validateValidLogin() {
