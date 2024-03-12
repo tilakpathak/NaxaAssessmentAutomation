@@ -4,6 +4,7 @@ class Infographics {
         cy.get("[type='search']").clear().type("Household Risk Assessment of Dodhara Chandani Municipality, Kanchanpur").wait(2000);
         cy.get(".is-grow.mb-10.naxatw-relative.pd-15.pm-card").click().wait(5000);
         cy.get(".dbd-togglecntr").scrollTo('bottom').wait(4000)
+        return this;
     }
 
     settingssiteinfo() {

@@ -6,17 +6,28 @@ describe("Test for Form page", () => {
 
     before(function () {
         cy.visitMainPage();
-        cy.login(); // Log in once before any tests
-    });
-
-    beforeEach(function () {
-        // Extract the CSRF token from the cookies and set it as a default header
-        cy.getCookie('csrftoken').then((cookie) => {
-            Cypress.Cookies.preserveOnce('sessionid', 'csrftoken');
-            cy.wrap(cookie.value).as('csrfToken')
+        cy.login().wait(4000);  
+      });
+      
+      beforeEach(function () {
+        // Preserve necessary cookies
+        Cypress.Cookies.defaults({
+            preserve: (cookie) => {
+                // Preserve specific cookies
+                if (
+                    cookie.name === '_ga' ||
+                    cookie.name === '_ga_5VM7YEZGK3' ||
+                    cookie.name === '_ga_MZHM60E58P' ||
+                    cookie.name === 'csrftoken' ||
+                    cookie.name === 'kobonaut'
+                ) {
+                    return true;
+                }
+                return false; // Exclude other cookies
+            }
         });
     });
-
+      
     it("User should redirect to the form page", () => {
         form.visitFormPage();
     });
