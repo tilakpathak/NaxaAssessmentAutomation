@@ -28,9 +28,13 @@ beforeEach(function () {
   });
 });
 
-  it.only("Admin should redirected to the project dashboard page", () => {
+  it("Admin should redirected to the project dashboard page", () => {
     projectdata.project();
   });
+
+  // it("Admin should be able to edit and remove the site", () => {
+  //   projectdata.editremove();
+  // });
 
   it("Admin should be able to search and filter the site", () => {
     projectdata.searchsite();
@@ -52,8 +56,16 @@ beforeEach(function () {
     projectdata.ActiveInactive();
   });
   
-  it.only("Admin should be able to edit/dopwnload form from the list", () => {
-    projectdata.editdownload();
-  });
+  it("Admin should be able to manage the form from the data page", () => {
+    projectdata.manageform();
+  })  
+  
+  // it("Admin should be able to edit/dopwnload form from the list", () => {
+  //   projectdata.editdownload();
+  // });
+
+  it("User should redirect to the clusters list page", () => {
+    projectdata.clusters()
+  })
 
 });
