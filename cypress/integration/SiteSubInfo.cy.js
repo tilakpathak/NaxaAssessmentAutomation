@@ -1,7 +1,7 @@
 ///<reference types="Cypress"/>
 import SiteSubInfo from "../POM/SiteSubInfo_po";
 
-describe("Test for site forms details", () => {
+describe("Test for site submission forms details", () => {
   const siteinfo = new SiteSubInfo();
 
 before(function () {
@@ -44,12 +44,12 @@ beforeEach(function () {
     siteinfo.dashboard();
   });
 
-  it("User should be able to search the site details on dashboard", () => {
-    siteinfo.search();
-  });
-
   it("User should be able to filter by time and meter site details", () => {
     siteinfo.timemeter();
+  });
+  
+  it("User should be able to search the site details on dashboard", () => {
+    siteinfo.search();
   });
 
   it("User should be able to select the form for site details", () => {

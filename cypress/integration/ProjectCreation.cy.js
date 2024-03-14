@@ -1,7 +1,7 @@
 ///<reference types="Cypress"/>
 import ProjectCreation from "../POM/ProjectCreation_po";
 
-describe("Test for project creating", () => {
+describe("Test for project creation", () => {
   const projectcreation = new ProjectCreation();
 
 before(function () {

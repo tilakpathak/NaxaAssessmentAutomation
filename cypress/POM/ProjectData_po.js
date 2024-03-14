@@ -19,7 +19,7 @@ class ProjectData {
         cy.get("#warning-modal .is-btn_red").wait(2000).click({force:true}) // click on confirmation button
         cy.get("div[role='alert'] > div:nth-of-type(2)").should('have.text', 'Successfully Removed Site') // assertion message 
         cy.scrollTo('top')
-
+        return this;
     }
 
     searchsite() {
@@ -83,9 +83,13 @@ class ProjectData {
     editdownload() {
         cy.get(':nth-child(2) > :nth-child(6) > .is-flex > .naxatw-relative > .naxatw-inline-flex > .naxatw-items-center > .naxatw-flex > .material-icons').click()
         cy.get('li[role="presentation"].naxatw-block').contains('Edit').click({force:true});   
-        cy.get(':nth-child(2) > :nth-child(6) > .is-flex > .naxatw-relative > .naxatw-inline-flex > .naxatw-items-center > .naxatw-flex > .material-icons').click()
-        cy.get("[class] tr:nth-of-type(2) [aria-labelledby] [role='presentation']:nth-of-type(2)").click()
-        cy.get("tr:nth-of-type(1) > td:nth-of-type(5) > span[title='download'] > .material-icons").invoke('removeattr', 'target').click()
+        const url = 'https://assessmenttestkf.naxa.com.np/#/forms/a2Z3jdsNLyUuSY3sp8gTnd/edit/'
+        cy.window().then(win => {
+            win.location.href = url;
+          });
+        // cy.get(':nth-child(2) > :nth-child(6) > .is-flex > .naxatw-relative > .naxatw-inline-flex > .naxatw-items-center > .naxatw-flex > .material-icons').click()
+        // cy.get("[class] tr:nth-of-type(2) [aria-labelledby] [role='presentation']:nth-of-type(2)").click()
+        // cy.get("tr:nth-of-type(1) > td:nth-of-type(5) > span[title='download'] > .material-icons").invoke('removeattr', 'target').click()
         return this;
     }
 
@@ -93,6 +97,7 @@ class ProjectData {
         cy.get('.is-between > .pm-tab > :nth-child(2) > a').click().wait(3000);
         cy.scrollTo('bottom').wait(2000)
         cy.scrollTo('top').wait(2000)
+        return this; 
     }
 
 }

@@ -62,7 +62,7 @@ class UserPage {
     cy.get(".pm-dropdown.pm-dropdown_option.pm-dropdown_right.pm-dropdown_show > .pm-dropdown_menu  a").click();
     cy.get("tr:nth-of-type(1) > td:nth-of-type(7) > .is-end.is-flex > .false.pm-dropdown.pm-dropdown_right > div#create-user > .pm-modal_cntr > .pm-modal_body.scrollbar input[name='email']").clear().type(data.email);
     cy.get(':nth-child(1) > :nth-child(7) > :nth-child(1) > .pm-dropdown > #create-user > .pm-modal_cntr > .pm-modal_footer > .is-btn_primary').click(); // Click save button
-    cy.get(".Toastify__toast-body > :nth-child(2)").should("have.text","Successfully Edited User");
+    cy.get(".Toastify__toast-body > :nth-child(2)").should("have.text", "Successfully Edited User");
     return data;
   }
 
@@ -134,10 +134,10 @@ class UserPage {
     cy.get(`.pm-select_show .pm-select_list > :nth-child(${randomIndex})`).click().wait(1500);
     cy.get(".dbd-header #create-user .is-btn_primary").click() //Save button
     cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
-    .contains('Username:A user with that username already exists.')
+      .contains('Username:A user with that username already exists.')
     return this;
   }
-  
+
   search() {
     cy.get("[type='search']").clear().type("test").wait(3000);
     cy.get("[type='search']").clear() //it clear the input name
@@ -145,18 +145,18 @@ class UserPage {
   }
 
   status() {
-    cy.get("tr:nth-of-type(4) > td:nth-of-type(6) > div > span > .switch > .round.slider").click() // To deactive User
-      cy.get(".Toastify__toast-body").should("have.text", "User Deactivated").wait(4000); // Deactive sucessfully message assertion 
+    cy.get(".table .round.slider").eq(4).click() // To deactive User
+    cy.get(".Toastify__toast-body").should("have.text", "User Deactivated").wait(4000); // Deactive sucessfully message assertion 
 
-    cy.get("tr:nth-of-type(4) > td:nth-of-type(6) > div > span > .switch > .round.slider").click(); // To active user
-    cy.get("div[role='alert'] > div:nth-of-type(2)").should("have.text", "User Activated").wait(2000); //Active sucessfully message assertion
+    cy.get(".table .round.slider").eq(4).click(); // To active user
+    cy.get(".Toastify__toast-body").should("have.text", "User Activated").wait(2000); //Active sucessfully message assertion
     return this;
-  
+
   }
 
   SortByName() {
-    cy.get("thead th:nth-of-type(2) .updown-arrow .material-icons:nth-of-type(1)").click({ force: true }).wait(2000); //sorting by name
-    cy.get("thead th:nth-of-type(2) .updown-arrow .material-icons:nth-of-type(2)").click({ force: true }).wait(2000); //sorting by name
+    cy.get(".updown-arrow .material-icons").eq(3).click({ force: true }).wait(2000); //sorting by name
+    cy.get(".updown-arrow .material-icons").eq(4).click({ force: true }).wait(2000); //sorting by name
     return this;
   }
 
