@@ -33,6 +33,19 @@ class Infographics {
         return this;
     }
 
+    editsiteinfo() {
+            //edit the site information details
+    cy.wait(2000)
+    cy.get("tbody tr:nth-of-type(1) div .material-icons").click();
+    cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(1) > a").click().wait(2000);
+    cy.get("input[name='name']").type("_test").wait(2000);
+    cy.get(".common-button.is-btn.is-btn_primary").click()
+    cy.scrollTo('top');
+    cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
+      .contains('Data updated successfully.')
+
+    }
+
     dashboard() {
         cy.get('.dbd-breadcrumb > :nth-child(2) > a').click().wait(4000)
         cy.get(".dbd-togglecntr").scrollTo('bottom')
@@ -103,6 +116,16 @@ class Infographics {
         cy.get('.is-capitalize').scrollIntoView().wait(1500);
         cy.get('.dbd-breadcrumb > :nth-child(2) > a').click().wait(4000)
         cy.get(".dbd-togglecntr").scrollTo('bottom')
+        return this;
+    }
+
+    download() {
+        cy.get("a .naxatw-rounded-lg").eq(1).click()
+        const fileNamePattern = '/Form 1\. General Household Information Form - all versions - _xml - \d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.csv/;'
+        cy.readFile('cypress/downloads').then(files => {
+            const matchingFiles = files.filter(file => fileNamePattern.test(file));
+            expect(matchingFiles.length).to.be.greaterThan(0);
+        });
         return this;
     }
 

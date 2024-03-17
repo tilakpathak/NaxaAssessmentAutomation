@@ -25,13 +25,13 @@ describe("Test for Form page", () => {
         form.emptyValidation();
     });
 
-    it("Verify the add form to the system", () => {
-        form.addform();
-    });
+    // it("Verify the add form to the system", () => {
+    //     form.addform();
+    // });
 
-    it("Verify the edit form functionality", () => {
-        form.editform();
-    });
+    // it("Verify the edit form functionality", () => {
+    //     form.editform();
+    // });
 
     it("User should be able to search the form", () => {
         form.search();

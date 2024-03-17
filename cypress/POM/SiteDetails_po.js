@@ -84,15 +84,16 @@ class Sitedetails {
         cy.scrollTo('top').wait(3000);
         cy.get('.is-btn').click({ force: true });
     
-        // // Get the current date and format it
-        // const today = new Date();
-        // const year = today.getFullYear();
-        // const month = String(today.getMonth() + 1).padStart(2, '0'); // Adding 1 because months are zero-based
-        // const day = String(today.getDate()).padStart(2, '0');
-        // const formattedDate = `${day}-${month}-${year}`; // Get the current date in DD-MM-YYYY format
+        // Get the current date and format it
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Adding 1 because months are zero-based
+        const day = String(today.getDate()).padStart(2, '0');
+        const formattedDate = `${day}-${month}-${year}`; // Get the current date in DD-MM-YYYY format
     
-        // // Construct the file path based on the current date
-        //   `C:/Users/tilak/OneDrive/Desktop/NaxaAssessmentAutomation/cypress/downloads/hdrpreport-${formattedDate}.pdf`;
+        // Construct the downloaded file path
+        const filePath = `C:/Users/tilak/OneDrive/Desktop/NaxaAssessmentAutomation/cypress/downloads/hdrpreport-${formattedDate}.pdf`;
+        return filePath;
     }
     
 }

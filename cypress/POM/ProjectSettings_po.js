@@ -71,103 +71,29 @@ class ProjectSettings {
   form() {
     cy.get(".pm-tab > :nth-child(4) > a").click().wait(4000); // Form section inside settings
     cy.get('.pm-select_item').click(); // click on the label dropdown
-    cy.get(".left-dropdown.pm-select_list > li:nth-of-type(1)").click();
-    cy.scrollTo('top').wait(4000);
-    cy.get('.pm-select_item').click(); // click on the label dropdown
     cy.get(".left-dropdown.pm-select_list > li:nth-of-type(2)").click();
     cy.scrollTo('top').wait(4000);
     cy.get(".is-flex > :nth-child(1) > span").click().scrollIntoView().wait(2000); //refresh the page  
-    cy.get(".search-wrap > .pm-control").type("Multicriteria Analysis to Decide Medical Drone Interventions");
-    cy.get("li[role='tab'] > .fw-600.mb-05").click().wait(2000) //click on the search form
+    cy.get(".search-wrap > .pm-control").type("Multicriteria Analysis to Decide Medical Drone Interventions").wait(3000).clear();
+    // cy.get("li[role='tab'] > .fw-600.mb-05").click().wait(2000) //click on the search form
+    cy.get('.forms-body > .pm-list > :last-child').scrollIntoView().click({force:true})  // click on the 4th form from the list 
     cy.get(".btnClassName.false.is-btn.is-btn_icon.is-btn_primary").click(); //save button
     cy.get('.Toastify__toast-body').should("have.text", "Successfully Form Assigned to Project."); // assertion for assigned form to the project
-    cy.scrollTo('top').wait(4000);
+    cy.scrollTo('top').wait(3000);
+    cy.get(".dbd-breadcrumb.fs-md.fw-md.is-align-center.is-flex.mb-15 > li:nth-of-type(2) > a").click({force:true}).wait(2000); //click on project name from the top of the setting page
+    cy.get(".mt-0.pm-tab.pm-tab_border > li:nth-of-type(2) > a").click({force:true}).wait(1500); //click on data
+    cy.get("[class='pm-tab-item pl-15'] ").scrollIntoView().wait(3000)
     return this;
   }
 
-  infographics() {
-    cy.get(".pm-tab > :nth-child(8) > a").click().wait(4000); // Infographic section inside settings
-    cy.get(".is-btn.is-btn_icon.is-btn_link > span").click().wait(2000); // click on create button
-    cy.get(":nth-child(1) > .pm-select > .pm-select_item").click().wait(1500) //click on select form dropdown
-    cy.get(".pm-select.pm-select_show > .left-dropdown.pm-select_list > li:nth-of-type(1)").click(); // select the form 
-    cy.get(".custom-select p").click({ force: true }).wait(3000); // click on the Questiondrop-down field.
-    cy.get(".select-list > :first-child").click(); // select Question
-    cy.get(":nth-child(3) > .pm-select > .pm-select_item").click(); // Click on chart type dropdown.
-    cy.get(".left-dropdown.pm-select_list > li:nth-of-type(4)").wait(1500).click({ force: true });
-    cy.get("input[name='name']").type("infographic test");
-    cy.get("input[name='description']").type("tHiS iS fOr TesTinG PurPosE")
-    cy.get("input[name='order']").type("0").wait(2000);
-    cy.get(".naxatw-toggle-label div").click().wait(2000);
-    cy.get(".is-btn_primary").click();
-    cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
-      .contains('Infographics Added successfully.')
-
-    // Edit Infographics 
-    cy.wait(5000);
-    cy.get('.is-between.is-flex.is-wrap.mb-15').should('be.visible');
-    cy.get("tbody tr:nth-of-type(1) div .material-icons").click(); //clicking the 3 dots 
-    cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(1) > a").click().wait(3000); //clicking the edit 
-    cy.get(":nth-child(2) > .pm-group > .naxatw-space-y-2 > .pm-control").clear().type("Naxa_Infographics").wait(3000);
-    cy.get(".common-button.is-btn.is-btn_primary").click();
-    cy.scrollTo('top');
-    cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
-      .contains('Infographics updated successfully.')
-
-    //Remove Infographics
-    cy.wait(5000);
-    cy.get('.is-between.is-flex.is-wrap.mb-15').should('be.visible');
-    cy.get("tbody tr:nth-of-type(1) div .material-icons").click(); //clicking the 3 dots 
-    cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(2) > a").click().wait(3000); //clicking the delete 
-    cy.get(".is-btn.is-btn_red").click();
-    cy.scrollTo('top');
-    return this;
-  }
-
-  siteformdetails() {
-    cy.wait(3000);
-    cy.get("li:nth-of-type(12) > a").click().wait(2000) // click on site submission details inside settings
-    cy.get(".is-btn.is-btn_icon.is-btn_link > span").click(); //click on create new button
-    cy.get(":nth-child(1) > .pm-select > .pm-select_item").click().wait(2000); //click on dropdown
-    cy.get(".left-dropdown.pm-select_list > li:nth-of-type(2)").click(); //select table
-    cy.get(":nth-child(2) > .pm-select > .pm-select_item").click().wait(2000); // click on form dropdown
-    cy.get(".pm-select.pm-select_show > .left-dropdown.pm-select_list > li[role='tab']").click(); //select the form
-    cy.get("p > span").click({force:true}).wait(2000); //click on question dropdon
-    cy.get("li:nth-of-type(1) > span").click({force:true});
-    cy.get("input[name='name']").type("Health");
-    cy.get("input[name='order']").type("0").wait(2000);
-    cy.get('.common-button').click({force:true});
-    cy.scrollTo('top');
-    cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
-      .contains('Data Saved Successfully.')
-
-    //edit the site information details
-    cy.wait(2000)
-    cy.get("tbody tr:nth-of-type(1) div .material-icons").click();
-    cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(1) > a").click().wait(2000);
-    cy.get("input[name='name']").type("_test").wait(2000);
-    cy.get(".common-button.is-btn.is-btn_primary").click()
-    cy.scrollTo('top');
-    cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
-      .contains('Data updated successfully.')
-
-    // remove the site information details
-    cy.wait(2000);
-    cy.get("tbody tr:nth-of-type(1) div .material-icons").click();
-    cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(2) > a").click().wait(2000);
-    cy.get(".is-btn.is-btn_red").click({force: true});
-    cy.scrollTo('top');
-    return this;
-  }
-
-  layersettings() {
-    cy.wait(4000);
-    cy.get(".dbd-breadcrumb.fs-md.fw-md.is-align-center.is-flex.mb-15 > li:nth-of-type(2) > a").click().wait(3000); //click on project name from the top of the setting page
-    cy.get(".mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click().wait(5000); //click on map
-    cy.get(".false.is-align-center.is-btn.is-btn_icon.is-btn_link.is-flex > .ml-05").click(); //click on settings
-    cy.get("li:nth-of-type(13) > a").click() //click on layer settinggs
-    cy.get("div:nth-of-type(1) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
-    cy.get("div:nth-of-type(2) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
-    cy.get("div:nth-of-type(3) > .naxatw-flex.naxatw-item-center.naxatw-justify-end  .round.slider").click(); //click on status 
+   layersettings() {
+    cy.scrollTo('top').wait(2000)
+    cy.get('.pm-tab_border > :nth-child(3) > a').click({force:true}).wait(4000) // click on the map 
+    cy.get(".false.is-align-center.is-btn.is-btn_icon.is-btn_link.is-flex > .ml-05").click({force:true}).wait(3000) //click on settings
+    cy.get("li:nth-of-type(13) > a").click({force:true}); //click on layer settinggs
+    cy.get(".round.slider").eq(0).click({force:true}); //click on status 
+    cy.get(".round.slider").eq(1).click({force:true}); //click on status 
+    cy.get(".round.slider").eq(2).click({force:true});//click on status 
     cy.go(-1); // back to the map page 
     cy.get(".container-fluid > .mt-0.pm-tab.pm-tab_border > li:nth-of-type(2) > a").click({force:true}); //click on data logic 
     cy.get(".container-fluid > .mt-0.pm-tab.pm-tab_border > li:nth-of-type(3) > a").click({force:true}).wait(5000); //click on map

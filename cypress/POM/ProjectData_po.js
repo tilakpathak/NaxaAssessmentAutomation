@@ -81,15 +81,15 @@ class ProjectData {
     }
 
     editdownload() {
-        cy.get(':nth-child(2) > :nth-child(6) > .is-flex > .naxatw-relative > .naxatw-inline-flex > .naxatw-items-center > .naxatw-flex > .material-icons').click()
-        cy.get('li[role="presentation"].naxatw-block').contains('Edit').click({force:true});   
-        const url = 'https://assessmenttestkf.naxa.com.np/#/forms/a2Z3jdsNLyUuSY3sp8gTnd/edit/'
-        cy.window().then(win => {
-            win.location.href = url;
-          });
         // cy.get(':nth-child(2) > :nth-child(6) > .is-flex > .naxatw-relative > .naxatw-inline-flex > .naxatw-items-center > .naxatw-flex > .material-icons').click()
-        // cy.get("[class] tr:nth-of-type(2) [aria-labelledby] [role='presentation']:nth-of-type(2)").click()
-        // cy.get("tr:nth-of-type(1) > td:nth-of-type(5) > span[title='download'] > .material-icons").invoke('removeattr', 'target').click()
+        // cy.get('li[role="presentation"].naxatw-block').contains('Edit').click({force:true});   
+        // const url = 'https://assessmenttestkf.naxa.com.np/#/forms/a2Z3jdsNLyUuSY3sp8gTnd/edit/'
+        // cy.window().then(win => {
+        //     win.location.href = url;
+        //   });
+        cy.get(':nth-child(2) > :nth-child(6) > .is-flex > .naxatw-relative > .naxatw-inline-flex > .naxatw-items-center > .naxatw-flex > .material-icons').click()
+        cy.get("[class] tr:nth-of-type(2) [aria-labelledby] [role='presentation']:nth-of-type(2)").click({force:true})
+        cy.get("tr:nth-of-type(1) > td:nth-of-type(5) > span[title='download'] > .material-icons").invoke('removeattr', 'target').click()
         return this;
     }
 

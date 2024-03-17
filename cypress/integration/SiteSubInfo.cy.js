@@ -39,6 +39,10 @@ beforeEach(function () {
   it("Admin should add site information details to the project", () => {
     siteinfo.addsiteinfo();
   });
+
+  it("Admin should able to edit site information details", () => {
+    siteinfo.editsiteinfo();
+  });
   
   it("User should be able to view the site details on dashboard", () => {
     siteinfo.dashboard();
@@ -58,6 +62,10 @@ beforeEach(function () {
 
   it("Admin should be able to remove the site details", () => {
     siteinfo.deletesiteinfo();
+  });
+
+  it("Admin should be able to download the site details", () => {
+    siteinfo.download();
   });
 
 });

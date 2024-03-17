@@ -76,5 +76,4 @@ describe("Test for User page", () => {
         users.Visitrolespage();
     })
 
-
 });

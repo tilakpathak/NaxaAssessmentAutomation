@@ -36,8 +36,12 @@ beforeEach(function () {
     infographics.settingsInfo();
   });
 
-  it("Admin should add infographic to the project", () => {
+  it("Admin should be able to add infographic to the project", () => {
     infographics.addinfographics();
+  });
+
+  it("Admin should be able to edit infographics", () => {
+    infographics.editinfographics();
   });
   
   it("User should be able to view the added infographics", () => {

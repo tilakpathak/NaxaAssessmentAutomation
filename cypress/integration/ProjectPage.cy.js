@@ -44,9 +44,9 @@ it("User should redirect to the Project page", () => {
     project.DateValidation();
   });
   
-  // it("Validate the successful project creation", () => {
-  //   project.AddProject();
-  // });
+  it("Validate the successful project creation", () => {
+    project.AddProject();
+  });
   
   it("Verify the Edit Functionality", () => {
     project.EditProject();

@@ -47,15 +47,7 @@ beforeEach(function () {
   it("Admin should be able to assign the from", () => {
     projectsettings.form();
   });
-
-  it("Admin should be able to add infographic", () => {
-    projectsettings.infographics();
-  });
-
-  it("Admin should be able to add site form details", () => {
-    projectsettings.siteformdetails();
-  });
-
+  
   it("Admin should be able to change the layer-settings", () => {
     projectsettings.layersettings();
   });
