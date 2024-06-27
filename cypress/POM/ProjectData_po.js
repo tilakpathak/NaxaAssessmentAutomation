@@ -4,8 +4,23 @@ class ProjectData {
         cy.get("[type='search']").clear().type("Household Risk Assessment of Dodhara Chandani Municipality, Kanchanpur").wait(2000);
         cy.get(".is-grow.mb-10.naxatw-relative.pd-15.pm-card").click().wait(5000);
         cy.get('.pm-tab > :nth-child(2) > a').click().wait(3000); //click on data from the dashboard 
+        this.infiniteScroll(".data_tab1-div > .dbd-body > .container-fluid > .pm-tab_content > .pm-tab-item");
         return this;
     }
+    infiniteScroll(selector) {
+        let prevScrollHeight = -1;
+        const scroll = () => {
+          cy.get(selector).scrollTo("bottom").wait(2000); // Wait for new data to load
+          cy.get(selector).then($table => {
+            if ($table.prop("scrollHeight") !== prevScrollHeight) {
+              prevScrollHeight = $table.prop("scrollHeight");
+              scroll(); // Continue scrolling if scroll height has changed
+            }
+          });
+        };
+        scroll();
+      }
+    
 
     editremove() {
         cy.get(':nth-child(1) > :nth-child(7) > .naxatw-block > .is-flex > .pm-dropdown > .is-circle > .material-icons').click({force:true}).wait(3000) //click on three dots 
@@ -33,7 +48,7 @@ class ProjectData {
         cy.get('.dbd-togglecntr > :nth-child(2) > :nth-child(1)').scrollIntoView().wait(3000)
         return this;
     }
-
+    
     sortby() {
         cy.get('.data_tab1-div > .dbd-body > .container-fluid > .pm-tab_content > .pm-tab-item > .pm-table > .table > thead > :nth-child(1) > :nth-child(1) > .is-flex > .updown-arrow > :nth-child(2)').click().wait(4000)
         cy.get('.data_tab1-div > .dbd-body > .container-fluid > .pm-tab_content > .pm-tab-item > .pm-table > .table > thead > :nth-child(1) > :nth-child(2) > .is-flex > .updown-arrow > :nth-child(2)').click().wait(4000)

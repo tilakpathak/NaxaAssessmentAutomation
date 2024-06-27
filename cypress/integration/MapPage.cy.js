@@ -10,22 +10,7 @@ describe("Test for Map page", () => {
   });
 
   beforeEach(function () {
-    // Extract the CSRF token from the cookies and set it as a default header
-    cy.getCookie('csrftoken').then((cookie) => {
-      Cypress.Cookies.preserveOnce('sessionid', 'csrftoken');
-      cy.wrap(cookie.value).as('csrfToken');
-    });
-
-    // Add your custom code to skip logout
-    Cypress.Cookies.defaults({
-      preserve: (cookie) => {
-        // Preserve all cookies except the logout related ones
-        if (cookie.name === 'logoutCookieName') {
-          return false; // Exclude logout cookie
-        }
-        return true; // Preserve all other cookies
-      }
-    });
+    cy.setupBeforeEach(); // Calling the beforeEach command
   });
 
   it("Admin should redirect to project details page", () => {
@@ -39,7 +24,7 @@ describe("Test for Map page", () => {
   it("User should be able to add form to layer", () => {
     mappage.Addlayer();
   });
-  
+
   it("User should be able to edit layer style", () => {
     mappage.editstyle();
   });
@@ -71,7 +56,7 @@ describe("Test for Map page", () => {
   it("User should be able to search by house & submission", () => {
     mappage.searchbyhouse();
   });
-  
+
   it("User should be able to view the criteria risk", () => {
     mappage.criteria();
   });

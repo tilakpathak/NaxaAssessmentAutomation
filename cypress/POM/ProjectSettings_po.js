@@ -1,5 +1,3 @@
-import { faker } from "@faker-js/faker";
-
 class ProjectSettings {
 
   selectproject() {
@@ -41,7 +39,7 @@ class ProjectSettings {
     cy.get(".mt-1.pm-dropdown_menu > li:nth-of-type(3) > a").click().wait(5000) //click on user settings
     cy.get(":nth-child(1) > .is-flex > .pm-select > .pm-select_item > input").click(); //select user namedropdown
     cy.scrollTo('top');
-    cy.get('.pm-select_show ul').scrollIntoView({ timeout: 5000, offset: { top: 20, left: 20 } }).contains("tilak7").click().wait(2000); // Adjust timeout and offset values as needed
+    cy.get('.pm-select_show ul').scrollIntoView({ timeout: 5000, offset: { top: 20, left: 20 } }).contains("tilak10").click().wait(2000); // Adjust timeout and offset values as needed
     // Select role for the user
     cy.get(":nth-child(2) > .is-flex > .pm-select > .pm-select_item > input").click().wait(2000);
     cy.scrollTo('top');
@@ -62,6 +60,7 @@ class ProjectSettings {
     cy.get(".pm-table_border").scrollTo('topRight') //scroll to top right of table
       .wait(5000); // Wait for 5 seconds
     cy.get("tbody > tr:last-child .is-circle.is-xs > .material-icons").click({force:true}).wait(2000); // removing the user
+    cy.get(".is-btn.is-btn_red").click({force:true}) 
     cy.get('.Toastify__toast-container').should('be.visible') // Ensure the toast container is visible
       .contains('Successfully User Unassigned.')
       cy.scrollTo('top');

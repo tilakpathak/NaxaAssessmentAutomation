@@ -10,31 +10,8 @@ describe("Test for User page", () => {
     });
 
     beforeEach(function () {
-        // Extract the CSRF token from the cookies and set it as a default header
-        cy.getCookie('csrftoken').then((cookie) => {
-          Cypress.Cookies.preserveOnce('sessionid', 'csrftoken');
-          cy.wrap(cookie.value).as('csrfToken');
-        });
-      
-        // Add your custom code to skip logout
-        Cypress.Cookies.defaults({
-          preserve: (cookie) => {
-            // Preserve all cookies except the logout related ones
-            if (cookie.name === 'logoutCookieName') {
-              return false; // Exclude logout cookie
-            }
-            return true; // Preserve all other cookies
-          }
-        });
-      });
-
-    // beforeEach(function () {
-    //     // Extract the CSRF token from the cookies and set it as a default header
-    //     cy.getCookie('csrftoken').then((cookie) => {
-    //         Cypress.Cookies.preserveOnce('sessionid', 'csrftoken');
-    //         cy.wrap(cookie.value).as('csrfToken')
-    //     });
-    // });
+        cy.setupBeforeEach(); // Calling the beforeEach command
+    });
 
     it("User should redirect to the user page", () => {
         users.visitUserPage();
@@ -47,7 +24,7 @@ describe("Test for User page", () => {
     it("Verify the user edit functionalilty", () => {
         users.EditUser();
     });
-    
+
     it("Verify the empty user cretaion", () => {
         users.emptyValidation();
     });
@@ -59,7 +36,7 @@ describe("Test for User page", () => {
     it("Verify the Duplicate usesrname and Email", () => {
         users.DuplicateUser();
     });
-    
+
     it("User should able to search the user", () => {
         users.search();
     });

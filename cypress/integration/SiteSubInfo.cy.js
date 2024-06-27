@@ -4,29 +4,14 @@ import SiteSubInfo from "../POM/SiteSubInfo_po";
 describe("Test for site submission forms details", () => {
   const siteinfo = new SiteSubInfo();
 
-before(function () {
-  cy.visitMainPage();
-  cy.login().wait(4000);  
-});
-
-beforeEach(function () {
-  // Extract the CSRF token from the cookies and set it as a default header
-  cy.getCookie('csrftoken').then((cookie) => {
-    Cypress.Cookies.preserveOnce('sessionid', 'csrftoken');
-    cy.wrap(cookie.value).as('csrfToken');
+  before(function () {
+    cy.visitMainPage();
+    cy.login().wait(4000);
   });
 
-  // Add your custom code to skip logout
-  Cypress.Cookies.defaults({
-    preserve: (cookie) => {
-      // Preserve all cookies except the logout related ones
-      if (cookie.name === 'logoutCookieName') {
-        return false; // Exclude logout cookie
-      }
-      return true; // Preserve all other cookies
-    }
+  beforeEach(function () {
+    cy.setupBeforeEach(); // Calling the beforeEach command
   });
-});
 
   it("Admin should redirected to the project dashboard page", () => {
     siteinfo.project();
@@ -43,7 +28,7 @@ beforeEach(function () {
   it("Admin should able to edit site information details", () => {
     siteinfo.editsiteinfo();
   });
-  
+
   it("User should be able to view the site details on dashboard", () => {
     siteinfo.dashboard();
   });
@@ -51,7 +36,7 @@ beforeEach(function () {
   it("User should be able to filter by time and meter site details", () => {
     siteinfo.timemeter();
   });
-  
+
   it("User should be able to search the site details on dashboard", () => {
     siteinfo.search();
   });

@@ -9,15 +9,10 @@ describe("Test for login page", () => {
     cy.visitMainPage();
   });
 
-
   beforeEach(function () {
-    // Extract the CSRF token from the cookies and set it as a default header
-      cy.getCookie('csrftoken').then((cookie) => {
-      Cypress.Cookies.preserveOnce('sessionid', 'csrftoken');
-      cy.wrap(cookie.value).as('csrfToken');
-    });
+    cy.setupBeforeEach(); // Calling the beforeEach command
   });
- 
+  
   const username = faker.internet.email();
   const password = faker.internet.password();
 

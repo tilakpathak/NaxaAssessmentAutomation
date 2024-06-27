@@ -9,18 +9,18 @@ class Dashboard {
     }
 
     ProjectPage() {
-        cy.url().should('include', '/projects'); // Assertion 
+        cy.url().should('include', '/projects').wait(3000); // Assertion 
         return this;
     }
 
     UserPage() {
-        cy.get("[class] li:nth-of-type(2) [xmlns]").click().wait(3000);
+        cy.get("[class] li:nth-of-type(2) [xmlns]").click().wait(4000);
         cy.url().should('include', '/users'); // Assertion
         return this; 
     }
 
     FormPage() {
-        cy.get("li:nth-of-type(3) > a > .menu-list_icon > svg").click().wait(3000);
+        cy.get("li:nth-of-type(3) > a > .menu-list_icon > svg").click().wait(4000);
         cy.url().should('include', '/forms'); // Assertion  
         return this;
     }

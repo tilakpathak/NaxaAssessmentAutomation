@@ -10,23 +10,9 @@ before(function () {
 });
 
 beforeEach(function () {
-  // Extract the CSRF token from the cookies and set it as a default header
-  cy.getCookie('csrftoken').then((cookie) => {
-    Cypress.Cookies.preserveOnce('sessionid', 'csrftoken');
-    cy.wrap(cookie.value).as('csrfToken');
-  });
-
-  // Add your custom code to skip logout
-  Cypress.Cookies.defaults({
-    preserve: (cookie) => {
-      // Preserve all cookies except the logout related ones
-      if (cookie.name === 'logoutCookieName') {
-        return false; // Exclude logout cookie
-      }
-      return true; // Preserve all other cookies
-    }
-  });
+  cy.setupBeforeEach(); // Calling the beforeEach command
 });
+
 
   it("Admin should redirected to the project dashboard page", () => {
     projectdata.project();

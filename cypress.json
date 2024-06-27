@@ -1,6 +1,7 @@
 {
     "viewportWidth": 1150, 
     "viewportHeight": 660, 
-    "browser": "chrome"
+    "browser": "chrome",
+    "chromeWebSecurity": false
     }
   

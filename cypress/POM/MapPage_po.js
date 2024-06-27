@@ -39,7 +39,7 @@ class MapPage {
     cy.get(':nth-child(2) > .acc-list > .acc-body > .is-list > :nth-child(1) > [title=""] > .pm-checkbox > .is-end > .pm-dropdown > .pm-dropdown_menu > :nth-child(1) > a').realHover().click({ force: true }); //click on edit
     cy.get("input[name='layerName']").clear().type("Test Info Layer").wait(2000) //type the layer name 
     cy.get("[class='naxatw-space-y-5'] .is-btn_primary").click(); // click on save button
-    cy.get(".dvd-sidebar-body.scrollbar").scrollTo('top').wait(3000)
+    cy.get(".dvd-sidebar-body.scrollbar").Tscrollo('top').wait(3000)
     return this;
   }
 
